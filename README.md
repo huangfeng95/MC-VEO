@@ -1,16 +1,14 @@
-## An Annotated Underwater Organism Image Benchmark Dataset and A Lightweight Module Designed for the Object Detection Networks
+## MC-VEO: A Visual-Event Odometry with Accurate 6-DoF Motion Compensation
 
-Jiafeng Huang<sup>1</sup>, Tianjun Zhang<sup>1</sup>, Shengjie Zhao<sup>1</sup>, Lin Zhang<sup>1</sup>, and Yicong Zhou<sup>2</sup>
+Jiafeng Huang<sup>1</sup>, Lin Zhang<sup>1</sup>, Tianjun Zhang<sup>1</sup>, Shengjie Zhao<sup>1</sup>
 
 <sup>1</sup>School of Software Engineering, Tongji University, Shanghai, China
 
-<sup>2</sup>Department of Computer and Information Science, University of Macau, China
-
 ### Introduction
 
->  This is the website for our paper An Annotated Underwater Organism Image Benchmark Dataset and A Lightweight Module Designed for the Object Detection Networks.
+>  This is the website for our paper MC-VEO: A Visual-Event Odometry with Accurate 6-DoF Motion Compensation.
 
 
 #### Source Codes
 
-[Sparse Ghost Module Codes](https://github.com/huangfeng95/Sparse-Ghost-Module)
+[MC-VEO](https://github.com/huangfeng95/mc-veo-buildconf)
