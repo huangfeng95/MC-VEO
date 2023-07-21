@@ -1,152 +1,102 @@
+## D-LIOM: Tightly-coupled Direct LiDAR-Inertial Odometry and Mapping
 
-<head>
-<meta http-equiv="Content-Language" content="zh-cn">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>MC-VEO</title>
+> **Our paper**: we have corrected some typos and errors in Section III-D of the previous version of the paper, the revised version can be accessed [here](https://github.com/peterWon/D-LIOM/blob/master/paper/TMM_D_LIOM_FINAL_VERSION.pdf). When amending our paper, I would like to say thanks to [Sky Shaw](https://www.zhihu.com/people/sky-shaw-jhu), who has found my errors and warmly provided his suggestions.
+>
+> **Related video:** A running demo can be found at https://youtu.be/21J2QLUQbno or at https://www.bilibili.com/video/BV14y4y157du.
+---
+### Sensor suite supported
+- 6-axis IMU + Velodyne/Ouster/Robosense LiDAR (Livox LiDAR can be also supported if the data of which is tansformed to the format of velodyne's, i.e., PointXYZRT.)
+---
+### Prerequisites
+- Install depends follow the instructions of ["cartographer"](https://google-cartographer.readthedocs.io/en/latest/index.html) and ["cartographer_ros"](https://google-cartographer-ros.readthedocs.io/en/latest/compilation.html) respectively. 
+- Build [OpenCV 3.3.1](https://opencv.org/releases/page/2/) (other version may work fine if it includes implementation of SURF keypoint detector) from source with "opencv_contrib"
+- Build [GTSAM 4.0.2](https://github.com/borglab/gtsam/tree/4.0.2) with compile options as follows:
+  
+  ```cmake -DGTSAM_USE_SYSTEM_EIGEN=ON -DGTSAM_WITH_TBB=OFF -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF -DGTSAM_COMPILE_OPTIONS_PUBLIC="" ..```
+- Build [PCL 1.8.0]() with compile options as follows:
+  
+  ```cmake -DPCL_ENABLE_SSE=OFF ..```
+---
+### Build
+- Clone this repository in your ROS workspace
 
-<style>
-<!--
-div.Section1
-	{page:Section1;}
- table.MsoNormalTable
-	{mso-style-parent:"";
-	font-size:10.0pt;
-	font-family:"Times New Roman","serif"}
-table.TableGrid
-	{border:1.0pt solid black;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	}
--->
-</style>
-<meta http-equiv="Content-Language" content="zh-cn">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>MC-VEO</title>
+- Set CMake variable "OpenCV_DIR" in the root [CMakeLists.txt](src/cartographer/CMakeLists.txt) of "cartographer". 
 
-<style>
-<!--
-div.Section1
-	{page:Section1;}
- table.MsoNormalTable
-	{mso-style-parent:"";
-	font-size:10.0pt;
-	font-family:"Times New Roman","serif"}
-table.TableGrid
-	{border:1.0pt solid black;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	}
--->
-</style>
-</head>
+- Return to the root folder of your ROS workspace (which has the same directory as this "README" file) and run:
 
-<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+      catkin_make_isolated
+---
+### Run an online demo
+#### TONGJI Dataset
+- Some demo sequences can be downloaded via: 
 
-<body>
+  - TONGJI dataset: [link](https://pan.baidu.com/s/12Y6CErygofwPf9f8FrNLqA), pwd: hfrl
 
-<table class="MsoNormalTable" border="0" cellpadding="0" width="1217" id="table3" height="35">
-	<tr>
-		<td valign="top" style="width: 1211px; height: 31px; padding: .75pt" align="left">
-		<p class="text">
-		<span lang="en-us"><font face="Calibri" size="5" color="#0000FF">
-		<b> MC-VEO: A Visual-Event Odometry with Accurate 6-DoF Motion Compensation</b></font></span><p class="text">
-		<span lang="en-us"><font face="Calibri" size="4" color="#0000FF">
-		Jiafeng Huang<sup>1</sup>,&nbsp;
-		Lin Zhang</font></span><sup>1</sup>, 
-		Tianjun Zhang</span><sup>1</sup>,
-		and Shengjie Zhao</span><sup>1</sup></font><p class="text">
-		<span lang="en-us">
-		<font face="Calibri" size="4" color="#0000FF"><sup>1</sup>School of Software Engineering, Tongji University, Shanghai, China</font></span><p class="text">
-	</tr>
-	</table>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Introduction</font></b></span></p>
-<p>
-<span style="font-size: 13pt; font-family: Calibri; color: windowtext" lang="EN-US">
-This is the website for our paper &quot;<a href="WESNet_R2.pdf"> Extrinsic Self-calibration of the Surround-view System: A Weakly Supervised Approach<span style="color: #000000">, 
-</span></a>&quot;</span></p>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Tongji Surround-view Dataset</font></b></span></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">
-<a href="https://pan.baidu.com/s/1BxdyM30Nysq7NABBML_Kgg">dataset.zip(password: cblf)</a></font></span></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">We collected our own dataset by an
-electric car equipped with four cameras mounted around on campus. Our surround-view dataset mainly consists of two parts, calibration site images
-and natural ones. The calibration site images were collected over the calibration site to provide weak supervision
-information, while the natural ones, which act as training and testing sets, were taken from natural scenes. 
-The original resolutions of all collected images are 1280×1080.
-Typical image samples contained in this dataset are shown below. </font></span></p>
-<p>
-<img border="0" src="samples.png" width="754" height="575"></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">This original dataset 
-contains 19,078 groups of fisheye images captured synchronously by SVS. In our implementation, the extrinsics' 
-settings are augmented into nine different types, and the final dataset contains about 170,000 groups of images.
-10% of the data were used for testing ( about 17,000 groups), and the rest forms the training set ( about 155,000 groups).
-In order to impove the performance of WESNet under different environmental conditions, images are grouped into 6 categories:</font></span></p>
-<table border="1" width="31%">
-	<tr>
-		<td width="232">
-		<p align="center"><b><font face="Calibri">Subset</font></b></td>
-		<td>
-		<p align="center"><b><font face="Calibri">Number of samples</font></b></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">lane-line</font></td>
-		<td>
-		<p align="center"><font face="Calibri">6,873</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">tiles</font></td>
-		<td>
-		<p align="center"><font face="Calibri">3,912</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">cement</font></td>
-		<td>
-		<p align="center"><font face="Calibri">526</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">narrow</font></td>
-		<td>
-		<p align="center"><font face="Calibri">1,256</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">sunlight</font></td>
-		<td>
-		<p align="center"><font face="Calibri">1,692</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">parking-site</font></td>
-		<td>
-		<p align="center"><font face="Calibri">4,819</font></td>
-	</tr>
-	</table>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Source Codes</font></b></span></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt"> 
-<a href="https://github.com/dokidoki-yo/WESNet">WESNetCode</a></font></span></p>
-<p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">Note: all these 
-codes related to WESNet are implemented by Pytorch and we run them on Nvidia Titan Xp. </font></span></p>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Demo Videos</font></b></span></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">The following 
-are two demo videos demonstrating the performance of our WESNet in extrinsics calibration for synthesizing surround-view images and correction, respectively. </font></span></p>
-<video src="video1_compress.mp4" width="600" height="450" controls preload></video>
-<video src="video2_compress.mp4" width="600" height="450" controls preload></video>
-<hr>
-<p align="justify"><font face="Calibri">Last update: <span lang="en-us">Aug. 16,
-</span>202<span lang="en-us">1</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
-</body>
-</html>
+- ```roslaunch dlio demo_dlio_tongji.launch bag_filename:=BAG_FILE_PATH```
+  where BAG_FILE_PATH is the full path of the downloaded bag file in your device
+
+- Some results on the self-collected TONGJI dataset.
+
+  <div align="center">
+      <img src="img/rot.png">  
+  </div>
+
+  <div align="center">
+      <img src="img/hc.png">  
+  </div>
+#### NTU-VIRAL
+
+- The dataset is available online at [NTU-VIRAL](https://ntu-aris.github.io/ntu_viral_dataset/)
+
+-     ```roslaunch dlio demo_dlio_viral.launch bag_filename:=BAG_FILE_PATH```
+  where BAG_FILE_PATH is the full path of the downloaded bag file in your device
+  
+-     Results on VIRAL
+  
+  <div align="center">
+      <img src="img/ntu_eee.png">  
+  </div>
+  
+  <div align="center">
+      <img src="img/ntu_nya.png">  
+  </div>
+  
+  <div align="center">
+      <img src="img/ntu_sbs.png">  
+  </div>
+  
+  
+  
+  
+#### KAIST-Complex Urban Dataset
+- The dataset is available online at [KAIST](https://irap.kaist.ac.kr/dataset/)
+
+- Play KAIST bag follow the instruction: [file_player](https://irap.kaist.ac.kr/dataset/development.html)
+
+- ```roslaunch dlio demo_dlio_kaist.launch```
+
+- Results on KAIST "Urban-09" and "Urban-10"
+
+  <div align="center">
+      <img src="img/kaist.png">  
+  </div>
+#### Your own data
+- Write a urdf file of your device and save it to folder ['urdf'](src/dlio/urdf)
+- Write a configuration file of your data and save it to ['config'](src/dlio/config)
+- Write a launch file of your data and save it to ['launch'](src/dlio/launch)
+- Run your bag as above examples
+---
+### Run offline and view mapping result
+#### Launch dlio offline
+    roslaunch dlio dlio_offline_tongji bag_filenames:=BAG_FILE_PATH
+#### View mapping result
+    roslaunch dlio dlio_map_viewer_rectified urdf_filename:=tongji pose_graph_pb_filename:=PG_FILENAME range_data_pb_filename:=RD_FILENAME rate:=100
+  where PG_FILENAME and RD_FILENAME are binary pbstream files saved to disk when launch the offline script above.
+
+---
+### Acknowledgements
+- The authors of [cartographer](https://github.com/cartographer-project/cartographer)
+- The authors of [cartographer_ros](https://github.com/cartographer-project/cartographer_ros)
+- The authors of [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM)
+- The authors of [VINS-Mono](https://github.com/HKUST-Aerial-Robotics/VINS-Mono)
+- The authors of [VIO-Doc](https://github.com/StevenCui/VIO-Doc)
