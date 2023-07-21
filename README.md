@@ -8,11 +8,24 @@ Jiafeng Huang<sup>1</sup>, Lin Zhang<sup>1</sup>, Tianjun Zhang<sup>1</sup>, She
 
 >  This is the website for our paper MC-VEO: A Visual-Event Odometry with Accurate 6-DoF Motion Compensation.
 
+### MC-VEO
 
-### Source Codes
+<center style="color:#C0C0C0;text-decoration:underline">Table 1. ATEs of MC-VEO and other classical VOs.</center>
 
-[MC-VEO](https://github.com/huangfeng95/mc-veo-buildconf)
+>  Considering all metrics comprehensively, the lightweight effect of the Sparse Ghost Module is the best among all compared schemes.
+
+<img src="ATE.png" style="zoom: 70%;" />
+
+<center style="color:#C0C0C0;text-decoration:underline">Table 2. Rotation Errors of MC-VEO and other classical VOs.</center>
+
+>  Considering all metrics comprehensively, the lightweight effect of the Sparse Ghost Module is the best among all compared schemes.
+
+<img src="RE.png" style="zoom: 70%;" />
 
 ### Demo Videos
 
 The following is the demo video demonstrating the performance of our MC-VEO. 
+
+### Source Codes
+
+[MC-VEO](https://github.com/huangfeng95/mc-veo-buildconf)
