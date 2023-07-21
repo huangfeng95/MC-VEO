@@ -9,6 +9,10 @@ Jiafeng Huang<sup>1</sup>, Lin Zhang<sup>1</sup>, Tianjun Zhang<sup>1</sup>, She
 >  This is the website for our paper MC-VEO: A Visual-Event Odometry with Accurate 6-DoF Motion Compensation.
 
 
-#### Source Codes
+### Source Codes
 
 [MC-VEO](https://github.com/huangfeng95/mc-veo-buildconf)
+
+### Demo Videos
+
+The following is the demo video demonstrating the performance of our MC-VEO. 
