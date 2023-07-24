@@ -74,7 +74,7 @@ However, the application of the event camera in visual odometry still faces cert
 To address these research gaps to some extent, we propose a novel visual-event odometry, namely MC-VEO (Motion Compensated Visual-Event Odometry), which follows an Event Generation Model (EGM) based direct sparse framework.
 Specifically, by introducing the temporal Gaussian weight into the standard contrast maximization framework, we propose the first effective 6-DoF motion compensation method that does not rely on additional sensors and only uses events to generate deblurring event frames.
 The generated frames can then be accurately aligned with the corresponding RGB images through EGM in MC-VEO, so as to overcome the modal gap between events and RGB images.
-Additionally, we decouple the optimization process of EGM based motion estimation objective function into two stages, and reduce the overall computational cost by pre-calculating the ``independent variables''. During the optimization, our matrix representation and parallel solving further accelerate the per-point processing of events, which enables MC-VEO to show satisfactory speed performance even facing large amounts of event data and candidate points.
+Additionally, we decouple the optimization process of EGM based motion estimation objective function into two stages, and reduce the overall computational cost by pre-calculating the ''independent variables''. During the optimization, our matrix representation and parallel solving further accelerate the per-point processing of events, which enables MC-VEO to show satisfactory speed performance even facing large amounts of event data and candidate points.
 
 <hr>
 <p><span lang="en-us"><b><font face="Calibri" size="5">Overall Framwork</font></b></span></p>
