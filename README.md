@@ -23,6 +23,10 @@ Jiafeng Huang<sup>1</sup>, Lin Zhang<sup>1</sup>, Tianjun Zhang<sup>1</sup>, She
 ### Demo Videos
 
 The following is the demo video demonstrating the performance of our MC-VEO. 
+<video src=bin.mp4></video>
+<video src="desk.mp4"></video>
+<video src="all_characters.mp4"></video>
+<video src="rocket_earth_light.mp4"></video>
 
 ### Source Codes
 
