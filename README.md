@@ -4,6 +4,8 @@ Jiafeng Huang<sup>1</sup>, Lin Zhang<sup>1</sup>, Tianjun Zhang<sup>1</sup>, She
 
 <sup>1</sup>School of Software Engineering, Tongji University, Shanghai, China
 
+<hr>
+
 ### Introduction
 
 >  This is the website for our paper MC-VEO: A Visual-Event Odometry with Accurate 6-DoF Motion Compensation.
@@ -20,12 +22,16 @@ Jiafeng Huang<sup>1</sup>, Lin Zhang<sup>1</sup>, Tianjun Zhang<sup>1</sup>, She
 
 >  Considering all metrics comprehensively, the performence of the MC-VEO is the best among all compared schemes.
 
+<hr>
+
 ### Demo Videos
 
 The following is the demo video demonstrating the performance of our MC-VEO. 
 
 <video src="bin.mp4" width="600"></video><video src="desk.mp4" width="600"></video>
 <video src="all_characters.mp4" width="600"></video><video src="rocket_earth_light.mp4" width="600"></video>
+
+<hr>
 
 ### Source Codes
 
