@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>WESNet</title>
+<title>MC-VEO</title>
 
 <style>
 <!--
@@ -21,7 +21,7 @@ table.TableGrid
 </style>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>WESNet</title>
+<title>MC-VEO</title>
 
 <style>
 <!--
@@ -49,107 +49,33 @@ table.TableGrid
 		<td valign="top" style="width: 1211px; height: 31px; padding: .75pt" align="left">
 		<p class="text">
 		<span lang="en-us"><font face="Calibri" size="5" color="#0000FF">
-		<b> Extrinsic Self-calibration of the Surround-view System: A Weakly Supervised Approach</b></font></span><p class="text">
+		<b> MC-VEO: A Visual-Event Odometry with Accurate 6-DoF Motion Compensation</b></font></span><p class="text">
 		<span lang="en-us"><font face="Calibri" size="4" color="#0000FF">
-		Yang Chen<sup>1</sup>,&nbsp;
-		Lin Zhang</font></span><font face="Calibri" size="4" color="#0000FF"><sup>1</sup><span lang="en-us">, 
-		Ying Shen</span><sup>1</sup><span lang="en-us">,
-		Brian Nlong Zhao</span><sup>2</sup><span lang="en-us">, 
-		and Yicong Zhou</span><sup>3</sup></font><p class="text">
-		<span lang="en-us">
-		<font face="Calibri" size="4" color="#0000FF"><sup>1</sup>School of Software Engineering, Tongji University, Shanghai, China</font></span><p class="text">
-		<font face="Calibri" size="4" color="#0000FF"><sup>2</sup><span lang="en-us">Department of Computer Science, University of Southern California, Los Angeles, USA</font></span><p class="text">
-		<font face="Calibri" size="4" color="#0000FF"><sup>3</sup><span lang="en-us">Department of Computer and Information Science, University of Macau, China</span></font></td>
+		Jiafeng Huang<sup>1</sup>,&nbsp;
+		Lin Zhang<sup>1</sup>,&nbsp;
+		Tianjun Zhang<sup>1</sup>,&nbsp;
+		and Shengjie Zhao<sup>1</sup>
+		<sup>1</sup>School of Software Engineering, Tongji University, Shanghai, China
 	</tr>
 	</table>
 <hr>
 <p><span lang="en-us"><b><font face="Calibri" size="5">Introduction</font></b></span></p>
 <p>
 <span style="font-size: 13pt; font-family: Calibri; color: windowtext" lang="EN-US">
-This is the website for our paper &quot;<a href="WESNet_R2.pdf"> Extrinsic Self-calibration of the Surround-view System: A Weakly Supervised Approach<span style="color: #000000">, 
-</span></a>&quot;</span></p>
-<hr>
-<p><span lang="en-us"><b><font face="Calibri" size="5">Tongji Surround-view Dataset</font></b></span></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">
-<a href="https://pan.baidu.com/s/1BxdyM30Nysq7NABBML_Kgg">dataset.zip(password: cblf)</a></font></span></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">We collected our own dataset by an
-electric car equipped with four cameras mounted around on campus. Our surround-view dataset mainly consists of two parts, calibration site images
-and natural ones. The calibration site images were collected over the calibration site to provide weak supervision
-information, while the natural ones, which act as training and testing sets, were taken from natural scenes. 
-The original resolutions of all collected images are 1280×1080.
-Typical image samples contained in this dataset are shown below. </font></span></p>
-<p>
-<img border="0" src="samples.png" width="754" height="575"></p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">This original dataset 
-contains 19,078 groups of fisheye images captured synchronously by SVS. In our implementation, the extrinsics' 
-settings are augmented into nine different types, and the final dataset contains about 170,000 groups of images.
-10% of the data were used for testing ( about 17,000 groups), and the rest forms the training set ( about 155,000 groups).
-In order to impove the performance of WESNet under different environmental conditions, images are grouped into 6 categories:</font></span></p>
-<table border="1" width="31%">
-	<tr>
-		<td width="232">
-		<p align="center"><b><font face="Calibri">Subset</font></b></td>
-		<td>
-		<p align="center"><b><font face="Calibri">Number of samples</font></b></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">lane-line</font></td>
-		<td>
-		<p align="center"><font face="Calibri">6,873</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">tiles</font></td>
-		<td>
-		<p align="center"><font face="Calibri">3,912</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">cement</font></td>
-		<td>
-		<p align="center"><font face="Calibri">526</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">narrow</font></td>
-		<td>
-		<p align="center"><font face="Calibri">1,256</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">sunlight</font></td>
-		<td>
-		<p align="center"><font face="Calibri">1,692</font></td>
-	</tr>
-	<tr>
-		<td width="232">
-		<p align="center"><font face="Calibri">parking-site</font></td>
-		<td>
-		<p align="center"><font face="Calibri">4,819</font></td>
-	</tr>
-	</table>
+This is the website for our paper MC-VEO: A Visual-Event Odometry with Accurate 6-DoF Motion Compensation.
 <hr>
 <p><span lang="en-us"><b><font face="Calibri" size="5">Source Codes</font></b></span></p>
 <p>
 <span lang="en-us"><font face="Calibri" style="font-size: 13pt"> 
-<a href="https://github.com/dokidoki-yo/WESNet">WESNetCode</a></font></span></p>
+<a href="https://github.com/huangfeng95/mc-veo-buildconf">MC-VEO Code</a></font></span></p>
 <p>
-<p>
-<span lang="en-us"><font face="Calibri" style="font-size: 13pt">Note: all these 
-codes related to WESNet are implemented by Pytorch and we run them on Nvidia Titan Xp. </font></span></p>
 <hr>
 <p><span lang="en-us"><b><font face="Calibri" size="5">Demo Videos</font></b></span></p>
 <p>
 <span lang="en-us"><font face="Calibri" style="font-size: 13pt">The following 
-are two demo videos demonstrating the performance of our WESNet in extrinsics calibration for synthesizing surround-view images and correction, respectively. </font></span></p>
-<video src="video1_compress.mp4" width="600" height="450" controls preload></video>
-<video src="video2_compress.mp4" width="600" height="450" controls preload></video>
+are four demo videos demonstrating the performance of our MC-VEO in some typical sequences from datasets. </font></span></p>
+<video src="bin.mp4" width="600" controls preload></video>
+<video src="desk.mp4" width="600" controls preload></video>
 <hr>
-<p align="justify"><font face="Calibri">Last update: <span lang="en-us">Aug. 16,
-</span>202<span lang="en-us">1</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
 </body>
 </html>
